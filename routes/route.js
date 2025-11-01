@@ -11,9 +11,12 @@ Router.post("/register", validator.registerValidator, authController.register);
 
 Router.get("/viewNotes", authMiddleware, notesController.viewNotes);
 Router.post("/addNote", authMiddleware, notesValidator.addNotes, notesController.addNote);
-Router.delete("/deleteNote/:id", authMiddleware, notesController.deleteNote);
 Router.get("/ViewarchiveNotes", authMiddleware, notesController.viewArchiveNotes);
 Router.get("/ViewpinNotes", authMiddleware, notesController.viewPinNotes);
 Router.get("/ViewdeletedNotes", authMiddleware, notesController.viewDeletedNotes);
+
+Router.post("/pinNotes/:id", authMiddleware, notesController.pinNote);
+Router.delete("/deleteNote/:id", authMiddleware, notesController.deleteNote);
+Router.post('/archiveNotes/:id', authMiddleware, notesController.archiveNote);
 
 module.exports = Router;

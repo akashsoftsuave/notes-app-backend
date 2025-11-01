@@ -59,3 +59,21 @@ exports.viewPinedNotes = async () => {
         throw err;
     }
 }
+
+exports.pinNote = async (noteId) => {
+    try{
+        const result = await Notes.update({pin: 1}, {where: {id: noteId}});
+        return result;
+    } catch(error){
+        throw error;
+    }   
+}
+
+exports.archiveNote = async (noteId) => {
+    try{
+        const result = await Notes.update({archive : 1}, {where: {id:noteId}});
+        return result;
+    } catch (error) {
+        throw error;
+    }
+}

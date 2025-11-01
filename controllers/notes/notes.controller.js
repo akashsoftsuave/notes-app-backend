@@ -54,3 +54,21 @@ exports.viewDeletedNotes = async (req, res)=>{
         res.status(500).send('Internal Server Error');
     }
 }
+
+exports.pinNote = async (req, res)=>{
+    try{
+        const result = await notesService.pinNote(req.params.id);   
+        res.status(200).json({message: 'Note pinned successfully', result});
+    }catch(error){
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+exports.archiveNote = async (req, res)=>{
+    try{
+        const result = await notesService.archiveNote(req.params.id);
+        res.status(200).json({message: 'note archived successfully', result})
+    } catch ( err ) {
+        res.status(500).send('internal server error');
+    }
+}
