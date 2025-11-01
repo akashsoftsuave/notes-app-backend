@@ -18,11 +18,11 @@ exports.login = async (email, password) => {
     throw new Error('Invalid password');
   }
 
-  const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+  const token = jwt.sign({ id: user.id, email: user.email, name: user.name }, JWT_SECRET, {
     expiresIn: '1d',
   });
 
-  return { token, user: { id: user.id, email: user.email } };
+  return { token, user: { id: user.id, email: user.email, name: user.name } };
 };
 
 exports.register = async (name, email, password) => {
